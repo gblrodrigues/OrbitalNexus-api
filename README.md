@@ -1,7 +1,7 @@
 # OrbitalNexus
 
 OrbitalNexus is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Database for managing planets, missions and astronauts in a fictional space exploration system.
-> Coming soon: Companion Android application powered by this API.
+> This API serves as the backend for the [OrbitalNexus Android application](https://github.com/gblrodrigues/OrbitalNexus-android).
 
 * [Technologies Used](#technologies-used)
 * [Features](#features)
@@ -181,6 +181,18 @@ Database (Exposed + H2)
 Dependencies managed by Koin
 ```
 
+## Related Projects
+
+### OrbitalNexus Android
+Android client built with:
+* Kotlin
+* Jetpack Compose
+* Retrofit
+* Koin
+* MVVM + StateFlow
+
+🔗 [Repository](https://github.com/gblrodrigues/OrbitalNexus-android)
+
 ## Contact
 
-🔗 LinkedIn: https://www.linkedin.com/in/gblrodrigues/
+🔗 [LinkedIn](https://www.linkedin.com/in/gblrodrigues/)
