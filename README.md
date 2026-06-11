@@ -33,19 +33,21 @@ OrbitalNexus is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Databas
 * List astronauts by mission
 * List all astronauts
 * Find astronaut by ID
+* Provide astronaut profile image URLs
+* Serve static image assets
 
 ## Running the Project
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/gblrodrigues/orbitalnexus.git
+git clone https://github.com/gblrodrigues/OrbitalNexus-api.git
 ```
 
 Navigate to the project folder:
 
 ```bash
-cd orbitalnexus
+cd OrbitalNexus-api
 ```
 
 Run the application:
@@ -105,7 +107,7 @@ GET /v1/missions/1/astronauts
     "name": "Luna Carter",
     "nationality": "Terran",
     "missionId": 1,
-    "image": null
+    "image": "/assets/astronauts/Luna_Carter_image_profile.png"
   }
 ]
 ```
@@ -130,6 +132,7 @@ src/main/kotlin/com/gblrod/orbitalnexus
 │
 ├── database
 │   ├── mapper
+│   ├── seed
 │   ├── AstronautsTable.kt
 │   ├── DatabaseFactory.kt
 │   ├── MissionsTable.kt
