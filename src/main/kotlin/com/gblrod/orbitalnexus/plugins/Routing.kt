@@ -7,6 +7,7 @@ import com.gblrod.orbitalnexus.service.AstronautService
 import com.gblrod.orbitalnexus.service.MissionService
 import com.gblrod.orbitalnexus.service.PlanetService
 import io.ktor.server.application.*
+import io.ktor.server.http.content.staticResources
 import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
 
@@ -25,6 +26,11 @@ fun Application.configureRouting() {
         )
         astronautRoutes(
             astronautService = astronautService
+        )
+
+        staticResources(
+            remotePath = "/assets",
+            basePackage = "assets"
         )
     }
 }
