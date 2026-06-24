@@ -73,48 +73,64 @@ object SeedData {
         MissionSeed(
             id = 1,
             name = "Aurora VII",
+            missionObjective = "Survey Kepler Prime and identify suitable landing zones for future expeditions.",
+            description = "The first manned mission to Kepler Prime, focused on planetary mapping and environmental analysis.",
             planetId = 1,
             launchYear = 2042
         ),
         MissionSeed(
             id = 2,
             name = "Nova Horizon",
+            missionObjective = "Establish a permanent research outpost on Kepler Prime.",
+            description = "A follow-up expedition that deployed advanced infrastructure and long-term scientific facilities.",
             planetId = 1,
             launchYear = 2044
         ),
         MissionSeed(
             id = 3,
             name = "Atlas Prime",
+            missionObjective = "Assess Nova Terra's habitability and catalog native ecosystems.",
+            description = "A large-scale exploration mission tasked with evaluating Nova Terra as a future settlement candidate.",
             planetId = 2,
             launchYear = 2046
         ),
         MissionSeed(
             id = 4,
             name = "Celestial Dawn",
+            missionObjective = "Develop the first civilian colony on Nova Terra.",
+            description = "A historic colonization effort that transported settlers, engineers, and agricultural specialists.",
             planetId = 2,
             launchYear = 2048
         ),
         MissionSeed(
             id = 5,
             name = "Stellar Path",
+            missionObjective = "Expand transportation and communication networks across Nova Terra.",
+            description = "Focused on strengthening infrastructure and supporting the rapid growth of the colony.",
             planetId = 2,
             launchYear = 2050
         ),
         MissionSeed(
             id = 6,
             name = "Eclipse Vanguard",
+            missionObjective = "Investigate Zenith IX's crystal formations and mineral resources.",
+            description = "A scientific expedition studying the planet's unique geology and economic potential.",
             planetId = 4,
             launchYear = 2052
         ),
         MissionSeed(
             id = 7,
             name = "Nebula Frontier",
+            missionObjective = "Establish automated mining operations on Zenith IX.",
+            description = "An industrial mission responsible for deploying extraction systems in extreme desert conditions.",
             planetId = 4,
             launchYear = 2054
         ),
         MissionSeed(
             id = 8,
             name = "Quantum Odyssey",
+            missionObjective = "Study anomalous energy signatures detected around Eclipse Haven.",
+            description = "A deep-space research mission investigating unexplained quantum phenomena and their potential applications.",
             planetId = 3,
             launchYear = 2056
         )
@@ -214,6 +230,8 @@ object SeedData {
                 MissionsTable.insert {
                     it[id] = mission.id
                     it[name] = mission.name
+                    it[description] = mission.description
+                    it[missionObjective] = mission.missionObjective
                     it[planetId] = mission.planetId
                     it[launchYear] = mission.launchYear
                 }
