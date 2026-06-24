@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.service
 
-import com.gblrod.orbitalnexus.model.Planet
+import com.gblrod.orbitalnexus.model.planet.Planet
 
 interface PlanetService {
     fun getAll(locale: String): List<Planet>

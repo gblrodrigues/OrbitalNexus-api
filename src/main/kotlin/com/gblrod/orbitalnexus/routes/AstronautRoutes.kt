@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.routes
 
-import com.gblrod.orbitalnexus.model.ErrorResponse
+import com.gblrod.orbitalnexus.model.error.ErrorResponse
 import com.gblrod.orbitalnexus.service.AstronautService
 import io.ktor.http.*
 import io.ktor.server.response.*

@@ -17,6 +17,7 @@ object DatabaseFactory {
                 PlanetsTable,
                 PlanetTranslationsTable,
                 MissionsTable,
+                MissionTranslationsTable,
                 AstronautsTable
             )
         }

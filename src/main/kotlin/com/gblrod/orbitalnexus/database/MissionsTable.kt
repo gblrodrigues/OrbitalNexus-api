@@ -10,16 +10,6 @@ object MissionsTable : Table(name = "missions") {
         length = 30
     )
 
-    val missionObjective = varchar(
-        name = "missionObjective",
-        length = 150
-    )
-
-    val description = varchar(
-        name = "description",
-        length = 150
-    )
-
     val planetId = integer(name = "planet_id")
     val launchYear = integer(name = "launch_year")
 

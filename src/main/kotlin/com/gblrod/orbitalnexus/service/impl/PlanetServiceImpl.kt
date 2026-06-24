@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.service.impl
 
-import com.gblrod.orbitalnexus.model.Planet
+import com.gblrod.orbitalnexus.model.planet.Planet
 import com.gblrod.orbitalnexus.repository.PlanetRepository
 import com.gblrod.orbitalnexus.service.PlanetService
 import com.gblrod.orbitalnexus.util.Locales
