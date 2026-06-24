@@ -9,5 +9,5 @@ interface MissionService {
     fun getById(id: Int): Mission?
     fun getByPlanetId(planetId: Int): List<Mission>
     fun getAstronautsByMissionId(missionId: Int): List<Astronaut>
-    fun getPlanetByMissionId(missionId: Int): Planet?
+    fun getPlanetByMissionId(missionId: Int, locale: String): Planet?
 }

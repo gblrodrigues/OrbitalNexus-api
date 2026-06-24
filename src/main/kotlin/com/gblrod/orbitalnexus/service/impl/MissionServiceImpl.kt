@@ -29,8 +29,12 @@ class MissionServiceImpl(
         return astronautRepository.getByMissionId(missionId)
     }
 
-    override fun getPlanetByMissionId(missionId: Int): Planet? {
+    override fun getPlanetByMissionId(missionId: Int, locale: String): Planet? {
         val mission = missionRepository.getById(missionId) ?: return null
-        return planetRepository.getById(mission.planetId)
+
+        return planetRepository.getById(
+            id = mission.planetId,
+            locale = locale
+        )
     }
 }

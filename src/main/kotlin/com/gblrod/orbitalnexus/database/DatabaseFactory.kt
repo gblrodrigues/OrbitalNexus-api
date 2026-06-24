@@ -15,6 +15,7 @@ object DatabaseFactory {
         transaction {
             SchemaUtils.create(
                 PlanetsTable,
+                PlanetTranslationsTable,
                 MissionsTable,
                 AstronautsTable
             )

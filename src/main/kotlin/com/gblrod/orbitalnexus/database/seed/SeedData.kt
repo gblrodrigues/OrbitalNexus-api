@@ -2,7 +2,9 @@ package com.gblrod.orbitalnexus.database.seed
 
 import com.gblrod.orbitalnexus.database.AstronautsTable
 import com.gblrod.orbitalnexus.database.MissionsTable
+import com.gblrod.orbitalnexus.database.PlanetTranslationsTable
 import com.gblrod.orbitalnexus.database.PlanetsTable
+import com.gblrod.orbitalnexus.model.Translation
 import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
@@ -13,22 +15,57 @@ object SeedData {
         PlanetSeed(
             id = 1,
             name = "Kepler Prime",
-            description = "Rocky planet located in the Vega sector."
+            descriptions = listOf(
+                Translation(locale = "en-US", description = "Rocky planet located in the Vega sector."),
+                Translation(locale = "pt-BR", description = "Planeta rochoso localizado no setor Vega."),
+                Translation(locale = "es-ES", description = "Planeta rocoso ubicado en el sector Vega.")
+            )
         ),
         PlanetSeed(
             id = 2,
             name = "Nova Terra",
-            description = "Habitable world with vast oceans."
+            descriptions = listOf(
+                Translation(locale = "en-US", description = "Habitable world with vast oceans."),
+                Translation(locale = "pt-BR", description = "Mundo habitável com vastos oceanos."),
+                Translation(locale = "es-ES", description = "Un mundo habitable con vastos océanos.")
+            )
         ),
         PlanetSeed(
             id = 3,
             name = "Eclipse Haven",
-            description = "Temperate planet surrounded by massive ring systems and rich mineral deposits."
+            descriptions = listOf(
+                Translation(
+                    locale = "en-US",
+                    description = "Temperate planet surrounded by massive ring systems and rich mineral deposits."
+                ),
+                Translation(
+                    locale = "pt-BR",
+                    description = "Planeta temperado rodeado por enormes sistemas de anéis e ricos depósitos minerais."
+                ),
+                Translation(
+                    locale = "es-ES",
+                    description = "Planeta templado rodeado de enormes sistemas de anillos y ricos depósitos minerales."
+                )
+            )
         ),
+
         PlanetSeed(
             id = 4,
             name = "Zenith IX",
-            description = "Remote desert world known for its towering crystal formations and extreme climate."
+            descriptions = listOf(
+                Translation(
+                    locale = "en-US",
+                    description = "Remote desert world known for its towering crystal formations and extreme climate."
+                ),
+                Translation(
+                    locale = "pt-BR",
+                    description = "Mundo desértico remoto conhecido por suas imponentes formações cristalinas e clima extremo."
+                ),
+                Translation(
+                    locale = "es-ES",
+                    description = "Mundo desértico remoto conocido por sus imponentes formaciones cristalinas y su clima extremo."
+                )
+            )
         )
     )
 
@@ -162,7 +199,14 @@ object SeedData {
                 PlanetsTable.insert {
                     it[id] = planet.id
                     it[name] = planet.name
-                    it[description] = planet.description
+                }
+
+                planet.descriptions.forEach { translation ->
+                    PlanetTranslationsTable.insert {
+                        it[planetId] = planet.id
+                        it[locale] = translation.locale
+                        it[description] = translation.description
+                    }
                 }
             }
 
