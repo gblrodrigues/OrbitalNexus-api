@@ -1,7 +1,7 @@
 package com.gblrod.orbitalnexus.database.mapper
 
 import com.gblrod.orbitalnexus.database.AstronautsTable
-import com.gblrod.orbitalnexus.model.Astronaut
+import com.gblrod.orbitalnexus.model.astronaut.Astronaut
 import org.jetbrains.exposed.v1.core.ResultRow
 
 fun ResultRow.toAstronaut(): Astronaut {

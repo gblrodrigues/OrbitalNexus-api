@@ -2,7 +2,7 @@ package com.gblrod.orbitalnexus.repository.impl
 
 import com.gblrod.orbitalnexus.database.AstronautsTable
 import com.gblrod.orbitalnexus.database.mapper.toAstronaut
-import com.gblrod.orbitalnexus.model.Astronaut
+import com.gblrod.orbitalnexus.model.astronaut.Astronaut
 import com.gblrod.orbitalnexus.repository.AstronautRepository
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.selectAll

@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.repository
 
-import com.gblrod.orbitalnexus.model.Astronaut
+import com.gblrod.orbitalnexus.model.astronaut.Astronaut
 
 interface AstronautRepository {
     fun getAll(): List<Astronaut>

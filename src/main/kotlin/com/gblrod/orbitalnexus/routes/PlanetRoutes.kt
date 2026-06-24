@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.routes
 
-import com.gblrod.orbitalnexus.model.ErrorResponse
+import com.gblrod.orbitalnexus.model.error.ErrorResponse
 import com.gblrod.orbitalnexus.service.MissionService
 import com.gblrod.orbitalnexus.service.PlanetService
 import com.gblrod.orbitalnexus.util.locale
@@ -64,7 +64,7 @@ fun Route.planetRoutes(
                 return@get
             }
 
-            val missionsByPlanet = missionService.getByPlanetId(id)
+            val missionsByPlanet = missionService.getByPlanetId(id, locale)
 
             call.respond(missionsByPlanet)
         }

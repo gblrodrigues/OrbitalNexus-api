@@ -1,4 +1,4 @@
-package com.gblrod.orbitalnexus.model
+package com.gblrod.orbitalnexus.model.astronaut
 
 import kotlinx.serialization.Serializable
 

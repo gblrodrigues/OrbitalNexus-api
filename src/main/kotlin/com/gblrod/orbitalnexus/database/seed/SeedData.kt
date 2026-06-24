@@ -1,10 +1,12 @@
 package com.gblrod.orbitalnexus.database.seed
 
 import com.gblrod.orbitalnexus.database.AstronautsTable
+import com.gblrod.orbitalnexus.database.MissionTranslationsTable
 import com.gblrod.orbitalnexus.database.MissionsTable
 import com.gblrod.orbitalnexus.database.PlanetTranslationsTable
 import com.gblrod.orbitalnexus.database.PlanetsTable
-import com.gblrod.orbitalnexus.model.Translation
+import com.gblrod.orbitalnexus.model.mission.MissionTranslation
+import com.gblrod.orbitalnexus.model.planet.PlanetTranslation
 import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
@@ -16,33 +18,33 @@ object SeedData {
             id = 1,
             name = "Kepler Prime",
             descriptions = listOf(
-                Translation(locale = "en-US", description = "Rocky planet located in the Vega sector."),
-                Translation(locale = "pt-BR", description = "Planeta rochoso localizado no setor Vega."),
-                Translation(locale = "es-ES", description = "Planeta rocoso ubicado en el sector Vega.")
+                PlanetTranslation(locale = "en-US", description = "Rocky planet located in the Vega sector."),
+                PlanetTranslation(locale = "pt-BR", description = "Planeta rochoso localizado no setor Vega."),
+                PlanetTranslation(locale = "es-ES", description = "Planeta rocoso ubicado en el sector Vega.")
             )
         ),
         PlanetSeed(
             id = 2,
             name = "Nova Terra",
             descriptions = listOf(
-                Translation(locale = "en-US", description = "Habitable world with vast oceans."),
-                Translation(locale = "pt-BR", description = "Mundo habitável com vastos oceanos."),
-                Translation(locale = "es-ES", description = "Un mundo habitable con vastos océanos.")
+                PlanetTranslation(locale = "en-US", description = "Habitable world with vast oceans."),
+                PlanetTranslation(locale = "pt-BR", description = "Mundo habitável com vastos oceanos."),
+                PlanetTranslation(locale = "es-ES", description = "Un mundo habitable con vastos océanos.")
             )
         ),
         PlanetSeed(
             id = 3,
             name = "Eclipse Haven",
             descriptions = listOf(
-                Translation(
+                PlanetTranslation(
                     locale = "en-US",
                     description = "Temperate planet surrounded by massive ring systems and rich mineral deposits."
                 ),
-                Translation(
+                PlanetTranslation(
                     locale = "pt-BR",
                     description = "Planeta temperado rodeado por enormes sistemas de anéis e ricos depósitos minerais."
                 ),
-                Translation(
+                PlanetTranslation(
                     locale = "es-ES",
                     description = "Planeta templado rodeado de enormes sistemas de anillos y ricos depósitos minerales."
                 )
@@ -53,15 +55,15 @@ object SeedData {
             id = 4,
             name = "Zenith IX",
             descriptions = listOf(
-                Translation(
+                PlanetTranslation(
                     locale = "en-US",
                     description = "Remote desert world known for its towering crystal formations and extreme climate."
                 ),
-                Translation(
+                PlanetTranslation(
                     locale = "pt-BR",
                     description = "Mundo desértico remoto conhecido por suas imponentes formações cristalinas e clima extremo."
                 ),
-                Translation(
+                PlanetTranslation(
                     locale = "es-ES",
                     description = "Mundo desértico remoto conocido por sus imponentes formaciones cristalinas y su clima extremo."
                 )
@@ -73,66 +75,192 @@ object SeedData {
         MissionSeed(
             id = 1,
             name = "Aurora VII",
-            missionObjective = "Survey Kepler Prime and identify suitable landing zones for future expeditions.",
-            description = "The first manned mission to Kepler Prime, focused on planetary mapping and environmental analysis.",
             planetId = 1,
-            launchYear = 2042
+            launchYear = 2042,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Survey Kepler Prime and identify suitable landing zones for future expeditions.",
+                    description = "The first manned mission to Kepler Prime, focused on planetary mapping and environmental analysis."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Explorar Kepler Prime e identificar áreas de pouso adequadas para futuras expedições.",
+                    description = "A primeira missão tripulada a Kepler Prime, com foco no mapeamento planetário e na análise ambiental."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Explorar Kepler Prime e identificar zonas de aterrizaje adecuadas para futuras expediciones.",
+                    description = "La primera misión tripulada a Kepler Prime, centrada en la cartografía planetaria y el análisis ambiental."
+                ),
+            )
         ),
         MissionSeed(
             id = 2,
             name = "Nova Horizon",
-            missionObjective = "Establish a permanent research outpost on Kepler Prime.",
-            description = "A follow-up expedition that deployed advanced infrastructure and long-term scientific facilities.",
             planetId = 1,
-            launchYear = 2044
+            launchYear = 2044,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Establish a permanent research outpost on Kepler Prime.",
+                    description = "A follow-up expedition that deployed advanced infrastructure and long-term scientific facilities."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Estabelecer um posto avançado permanente de pesquisa em Kepler Prime.",
+                    description = "Uma expedição de acompanhamento que implantou infraestrutura avançada e instalações científicas de longo prazo."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Establecer un puesto avanzado permanente de investigación en Kepler Prime.",
+                    description = "Una expedición de seguimiento que desplegó infraestructura avanzada e instalaciones científicas a largo plazo."
+                )
+            )
         ),
+
         MissionSeed(
             id = 3,
             name = "Atlas Prime",
-            missionObjective = "Assess Nova Terra's habitability and catalog native ecosystems.",
-            description = "A large-scale exploration mission tasked with evaluating Nova Terra as a future settlement candidate.",
             planetId = 2,
-            launchYear = 2046
+            launchYear = 2046,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Assess Nova Terra's habitability and catalog native ecosystems.",
+                    description = "A large-scale exploration mission tasked with evaluating Nova Terra as a future settlement candidate."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Avaliar a habitabilidade de Nova Terra e catalogar seus ecossistemas nativos.",
+                    description = "Uma missão de exploração em grande escala encarregada de avaliar Nova Terra como candidata a futuros assentamentos."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Evaluar la habitabilidad de Nova Terra y catalogar sus ecosistemas nativos.",
+                    description = "Una misión de exploración a gran escala encargada de evaluar Nova Terra como candidata para futuros asentamientos."
+                )
+            )
         ),
+
         MissionSeed(
             id = 4,
             name = "Celestial Dawn",
-            missionObjective = "Develop the first civilian colony on Nova Terra.",
-            description = "A historic colonization effort that transported settlers, engineers, and agricultural specialists.",
             planetId = 2,
-            launchYear = 2048
+            launchYear = 2048,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Develop the first civilian colony on Nova Terra.",
+                    description = "A historic colonization effort that transported settlers, engineers, and agricultural specialists."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Desenvolver a primeira colônia civil em Nova Terra.",
+                    description = "Um esforço histórico de colonização que transportou colonos, engenheiros e especialistas em agricultura."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Desarrollar la primera colonia civil en Nova Terra.",
+                    description = "Un histórico esfuerzo de colonización que transportó colonos, ingenieros y especialistas agrícolas."
+                )
+            )
         ),
+
         MissionSeed(
             id = 5,
             name = "Stellar Path",
-            missionObjective = "Expand transportation and communication networks across Nova Terra.",
-            description = "Focused on strengthening infrastructure and supporting the rapid growth of the colony.",
             planetId = 2,
-            launchYear = 2050
+            launchYear = 2050,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Expand transportation and communication networks across Nova Terra.",
+                    description = "Focused on strengthening infrastructure and supporting the rapid growth of the colony."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Expandir as redes de transporte e comunicação por toda Nova Terra.",
+                    description = "Focada no fortalecimento da infraestrutura e no suporte ao rápido crescimento da colônia."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Expandir las redes de transporte y comunicación por toda Nova Terra.",
+                    description = "Centrada en fortalecer la infraestructura y apoyar el rápido crecimiento de la colonia."
+                )
+            )
         ),
+
         MissionSeed(
             id = 6,
             name = "Eclipse Vanguard",
-            missionObjective = "Investigate Zenith IX's crystal formations and mineral resources.",
-            description = "A scientific expedition studying the planet's unique geology and economic potential.",
             planetId = 4,
-            launchYear = 2052
+            launchYear = 2052,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Investigate Zenith IX's crystal formations and mineral resources.",
+                    description = "A scientific expedition studying the planet's unique geology and economic potential."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Investigar as formações cristalinas e os recursos minerais de Zenith IX.",
+                    description = "Uma expedição científica dedicada ao estudo da geologia singular do planeta e de seu potencial econômico."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Investigar las formaciones cristalinas y los recursos minerales de Zenith IX.",
+                    description = "Una expedición científica dedicada al estudio de la geología única del planeta y de su potencial económico."
+                )
+            )
         ),
+
         MissionSeed(
             id = 7,
             name = "Nebula Frontier",
-            missionObjective = "Establish automated mining operations on Zenith IX.",
-            description = "An industrial mission responsible for deploying extraction systems in extreme desert conditions.",
             planetId = 4,
-            launchYear = 2054
+            launchYear = 2054,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Establish automated mining operations on Zenith IX.",
+                    description = "An industrial mission responsible for deploying extraction systems in extreme desert conditions."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Estabelecer operações automatizadas de mineração em Zenith IX.",
+                    description = "Uma missão industrial responsável pela implantação de sistemas de extração em condições desérticas extremas."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Establecer operaciones automatizadas de minería en Zenith IX.",
+                    description = "Una misión industrial responsable del despliegue de sistemas de extracción en condiciones desérticas extremas."
+                )
+            )
         ),
+
         MissionSeed(
             id = 8,
             name = "Quantum Odyssey",
-            missionObjective = "Study anomalous energy signatures detected around Eclipse Haven.",
-            description = "A deep-space research mission investigating unexplained quantum phenomena and their potential applications.",
             planetId = 3,
-            launchYear = 2056
+            launchYear = 2056,
+            translations = listOf(
+                MissionTranslation(
+                    locale = "en-US",
+                    missionObjective = "Study anomalous energy signatures detected around Eclipse Haven.",
+                    description = "A deep-space research mission investigating unexplained quantum phenomena and their potential applications."
+                ),
+                MissionTranslation(
+                    locale = "pt-BR",
+                    missionObjective = "Estudar assinaturas de energia anômalas detectadas ao redor de Eclipse Haven.",
+                    description = "Uma missão de pesquisa no espaço profundo que investiga fenômenos quânticos inexplicáveis e suas possíveis aplicações."
+                ),
+                MissionTranslation(
+                    locale = "es-ES",
+                    missionObjective = "Estudiar firmas energéticas anómalas detectadas alrededor de Eclipse Haven.",
+                    description = "Una misión de investigación en el espacio profundo que estudia fenómenos cuánticos inexplicables y sus posibles aplicaciones."
+                )
+            )
         )
     )
 
@@ -230,10 +358,17 @@ object SeedData {
                 MissionsTable.insert {
                     it[id] = mission.id
                     it[name] = mission.name
-                    it[description] = mission.description
-                    it[missionObjective] = mission.missionObjective
                     it[planetId] = mission.planetId
                     it[launchYear] = mission.launchYear
+                }
+
+                mission.translations.forEach { translation ->
+                    MissionTranslationsTable.insert {
+                        it[missionId] = mission.id
+                        it[locale] = translation.locale
+                        it[missionObjective] = translation.missionObjective
+                        it[description] = translation.description
+                    }
                 }
             }
 

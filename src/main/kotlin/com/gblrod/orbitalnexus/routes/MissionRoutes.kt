@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.routes
 
-import com.gblrod.orbitalnexus.model.ErrorResponse
+import com.gblrod.orbitalnexus.model.error.ErrorResponse
 import com.gblrod.orbitalnexus.service.MissionService
 import com.gblrod.orbitalnexus.util.locale
 import io.ktor.http.*
@@ -12,7 +12,8 @@ fun Route.missionRoutes(
 ) {
     route("v1/missions") {
         get {
-            val missions = missionService.getAll()
+            val locale = call.locale()
+            val missions = missionService.getAll(locale)
             call.respond(missions)
         }
 
@@ -27,7 +28,8 @@ fun Route.missionRoutes(
                 return@get
             }
 
-            val mission = missionService.getById(id)
+            val locale = call.locale()
+            val mission = missionService.getById(id, locale)
 
             if (mission != null) {
                 call.respond(mission)
@@ -50,7 +52,8 @@ fun Route.missionRoutes(
                 return@get
             }
 
-            val mission = missionService.getById(id)
+            val locale = call.locale()
+            val mission = missionService.getById(id, locale)
 
             if (mission == null) {
                 call.respond(
