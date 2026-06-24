@@ -8,6 +8,8 @@ fun ResultRow.toMission(): Mission {
     return Mission(
         id = this[MissionsTable.id],
         name = this[MissionsTable.name],
+        missionObjective = this[MissionsTable.missionObjective],
+        description = this[MissionsTable.description],
         planetId = this[MissionsTable.planetId],
         launchYear = this[MissionsTable.launchYear]
     )

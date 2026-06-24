@@ -6,6 +6,8 @@ import kotlinx.serialization.Serializable
 data class Mission(
     val id: Int,
     val name: String,
+    val missionObjective: String,
+    val description: String,
     val planetId: Int,
     val launchYear: Int
 )
