@@ -1,8 +1,9 @@
 package com.gblrod.orbitalnexus.routes
 
-import com.gblrod.orbitalnexus.model.ErrorResponse
+import com.gblrod.orbitalnexus.model.error.ErrorResponse
 import com.gblrod.orbitalnexus.service.MissionService
 import com.gblrod.orbitalnexus.service.PlanetService
+import com.gblrod.orbitalnexus.util.locale
 import io.ktor.http.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -13,7 +14,8 @@ fun Route.planetRoutes(
 ) {
     route("v1/planets") {
         get {
-            val planets = planetService.getAll()
+            val locale = call.locale()
+            val planets = planetService.getAll(locale)
             call.respond(planets)
         }
 
@@ -27,8 +29,8 @@ fun Route.planetRoutes(
                 )
                 return@get
             }
-
-            val planet = planetService.getById(id)
+            val locale = call.locale()
+            val planet = planetService.getById(id, locale)
 
             if (planet == null) {
                 call.respond(
@@ -51,8 +53,8 @@ fun Route.planetRoutes(
                 )
                 return@get
             }
-
-            val planet = planetService.getById(id)
+            val locale = call.locale()
+            val planet = planetService.getById(id, locale)
 
             if (planet == null) {
                 call.respond(
@@ -62,7 +64,7 @@ fun Route.planetRoutes(
                 return@get
             }
 
-            val missionsByPlanet = missionService.getByPlanetId(id)
+            val missionsByPlanet = missionService.getByPlanetId(id, locale)
 
             call.respond(missionsByPlanet)
         }

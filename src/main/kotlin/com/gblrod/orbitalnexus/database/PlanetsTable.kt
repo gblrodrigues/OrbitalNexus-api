@@ -10,7 +10,5 @@ object PlanetsTable : Table(name = "planets") {
         length = 30
     )
 
-    val description = text(name = "description")
-
     override val primaryKey = PrimaryKey(firstColumn = id)
 }

@@ -1,4 +1,4 @@
-package com.gblrod.orbitalnexus.model
+package com.gblrod.orbitalnexus.model.error
 
 import kotlinx.serialization.Serializable
 

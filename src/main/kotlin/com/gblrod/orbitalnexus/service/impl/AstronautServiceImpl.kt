@@ -1,6 +1,6 @@
 package com.gblrod.orbitalnexus.service.impl
 
-import com.gblrod.orbitalnexus.model.Astronaut
+import com.gblrod.orbitalnexus.model.astronaut.Astronaut
 import com.gblrod.orbitalnexus.repository.AstronautRepository
 import com.gblrod.orbitalnexus.service.AstronautService
 
