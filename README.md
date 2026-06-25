@@ -1,6 +1,10 @@
-# OrbitalNexus
+# OrbitalNexus API
+![API Version](https://img.shields.io/badge/API-v1.0-blue)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.3-7F52FF)](https://kotlinlang.org/)
+[![Ktor](https://img.shields.io/badge/Ktor-3.5-087CFA)](https://ktor.io/)
+[![Koin](https://img.shields.io/badge/Koin-4.2.1-purple)](https://insert-koin.io/)
 
-OrbitalNexus is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Database for managing planets, missions and astronauts in a fictional space exploration system.
+OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Database for managing planets, missions and astronauts in a fictional space exploration system.
 > This API serves as the backend for the [OrbitalNexus Android application](https://github.com/gblrodrigues/OrbitalNexus-android).
 
 * [Technologies Used](#technologies-used)
@@ -8,6 +12,7 @@ OrbitalNexus is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Databas
 * [Running the Project](#running-the-project)
 * [API Endpoints](#api-endpoints)
 * [Example Responses](#example-responses)
+* [Localization](#localization)
 * [Project Structure](#project-structure)
 * [Contact](#contact)
 
@@ -24,16 +29,28 @@ OrbitalNexus is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Databas
 
 ## Features
 
+### Planets
 * List all planets
 * Find planet by ID
 * List missions by planet
+* Multilingual planet descriptions
+
+### Missions
 * List all missions
 * Find mission by ID
+* Mission objectives and descriptions
+* Multilingual mission content
 * Retrieve mission planet
-* List astronauts by mission
+
+### Astronauts
 * List all astronauts
 * Find astronaut by ID
+* List astronauts by mission
 * Provide astronaut profile image URLs
+
+### Platform
+* Locale-based API responses
+* Automatic fallback to default locale
 * Serve static image assets
 
 ## Running the Project
@@ -85,6 +102,15 @@ http://localhost:8080
 | GET | /v1/astronauts | List all astronauts
 | GET | /v1/astronauts/{id} | Find astronaut by ID
 
+### Localization Examples
+
+| Endpoint | Description |
+|----------|------------|
+| GET /v1/planets?lang=pt-BR | Returns planets in Portuguese
+| GET /v1/planets/1?lang=es-ES | Returns a planet in Spanish
+| GET /v1/missions?lang=pt-BR | Returns missions in Portuguese
+| GET /v1/missions/1?lang=es-ES | Returns a mission in Spanish
+
 ## Example Responses
 
 GET /v1/missions/1
@@ -93,12 +119,14 @@ GET /v1/missions/1
 {
   "id": 1,
   "name": "Aurora VII",
+  "missionObjective": "Survey Kepler Prime and identify suitable landing zones for future expeditions.",
+  "description": "The first manned mission to Kepler Prime, focused on planetary mapping and environmental analysis.",
   "planetId": 1,
   "launchYear": 2042
 }
 ```
 
-GET /v1/missions/1/astronauts
+**GET /v1/missions/1/astronauts**
 
 ```json
 [
@@ -112,13 +140,34 @@ GET /v1/missions/1/astronauts
 ]
 ```
 
-GET /v1/missions/1/planet
+**GET /v1/missions/1/planet**
 
 ```json
 {
   "id": 1,
   "name": "Kepler Prime",
   "description": "Rocky planet located in the Vega sector."
+}
+```
+
+## Localization
+All planet and mission endpoints support localization through the `lang` query parameter.
+> If a translation is not available for the requested locale, the API automatically falls back to the default locale (`en-US`).
+
+Supported locales:
+* en-US (default)
+* pt-BR
+* es-ES
+
+**GET /v1/missions/1?lang=es-ES**
+```json
+{
+  "id": 1,
+  "name": "Aurora VII",
+  "missionObjective": "Explorar Kepler Prime e identificar zonas de aterrizaje adecuadas para futuras expediciones.",
+  "description": "La primera misión tripulada a Kepler Prime, centrada en la cartografía planetaria y el análisis ambiental.",
+  "planetId": 1,
+  "launchYear": 2042
 }
 ```
 
@@ -136,7 +185,9 @@ src/main/kotlin/com/gblrod/orbitalnexus
 │   ├── AstronautsTable.kt
 │   ├── DatabaseFactory.kt
 │   ├── MissionsTable.kt
-│   └── PlanetsTable.kt
+│   ├── MissionTranslationsTable.kt
+│   ├── PlanetsTable.kt
+│   └── PlanetTranslationsTable.kt
 │
 ├── di
 │   └── AppModule.kt
