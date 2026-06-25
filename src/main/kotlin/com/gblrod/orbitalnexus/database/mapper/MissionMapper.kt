@@ -1,7 +1,7 @@
 package com.gblrod.orbitalnexus.database.mapper
 
-import com.gblrod.orbitalnexus.database.MissionTranslationsTable
-import com.gblrod.orbitalnexus.database.MissionsTable
+import com.gblrod.orbitalnexus.database.table.MissionTranslationsTable
+import com.gblrod.orbitalnexus.database.table.MissionsTable
 import com.gblrod.orbitalnexus.model.mission.Mission
 import org.jetbrains.exposed.v1.core.ResultRow
 

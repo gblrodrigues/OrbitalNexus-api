@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Luna Carter",
+    "nationality": "Terran",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Luna_Carter_image_profile.png",
+    "missionId": 1
+  },
+  {
+    "id": 2,
+    "name": "Marcus Vega",
+    "nationality": "Terran",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Marcus_Vega_image_profile.png",
+    "missionId": 2
+  },
+  {
+    "id": 3,
+    "name": "Ethan Cross",
+    "nationality": "Terran",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Ethan_Cross_image_profile.png",
+    "missionId": 3
+  },
+  {
+    "id": 4,
+    "name": "Sophia Nova",
+    "nationality": "Terran",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Sophia_Nova_image_profile.png",
+    "missionId": 4
+  },
+  {
+    "id": 5,
+    "name": "Orion Blake",
+    "nationality": "Terran",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Orion_Blake_image_profile.png",
+    "missionId": 5
+  },
+  {
+    "id": 6,
+    "name": "Noah Sterling",
+    "nationality": "Martian",
+    "image": "http://192.168.3.7:8080/assets/astronauts/Noah_Sterling_image_profile.png",
+    "missionId": 3
+  },
+  {
+    "id": 7,
+    "name": "Ava Reynolds",
+    "nationality": "Lunarian",
+    "image": null,
+    "missionId": 6
+  },
+  {
+    "id": 8,
+    "name": "Carol Hart",
+    "nationality": "Terran",
+    "image": null,
+    "missionId": 7
+  },
+  {
+    "id": 9,
+    "name": "Liam Garry",
+    "nationality": "Titanian",
+    "image": null,
+    "missionId": 7
+  },
+  {
+    "id": 10,
+    "name": "Zara Novak",
+    "nationality": "Europa Colony",
+    "image": null,
+    "missionId": 8
+  }
+]
