@@ -1,7 +1,7 @@
 package com.gblrod.orbitalnexus.repository.impl
 
-import com.gblrod.orbitalnexus.database.PlanetTranslationsTable
-import com.gblrod.orbitalnexus.database.PlanetsTable
+import com.gblrod.orbitalnexus.database.table.PlanetTranslationsTable
+import com.gblrod.orbitalnexus.database.table.PlanetsTable
 import com.gblrod.orbitalnexus.database.mapper.toPlanet
 import com.gblrod.orbitalnexus.model.planet.Planet
 import com.gblrod.orbitalnexus.repository.PlanetRepository

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Kepler Prime",
+    "descriptions": [
+      {
+        "locale": "en-US",
+        "description": "Rocky planet located in the Vega sector."
+      },
+      {
+        "locale": "pt-BR",
+        "description": "Planeta rochoso localizado no setor Vega."
+      },
+      {
+        "locale": "es-ES",
+        "description": "Planeta rocoso ubicado en el sector Vega."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Nova Terra",
+    "descriptions": [
+      {
+        "locale": "en-US",
+        "description": "Habitable world with vast oceans."
+      },
+      {
+        "locale": "pt-BR",
+        "description": "Mundo habitável com vastos oceanos."
+      },
+      {
+        "locale": "es-ES",
+        "description": "Un mundo habitable con vastos océanos."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Eclipse Haven",
+    "descriptions": [
+      {
+        "locale": "en-US",
+        "description": "Temperate planet surrounded by massive ring systems and rich mineral deposits."
+      },
+      {
+        "locale": "pt-BR",
+        "description": "Planeta temperado rodeado por enormes sistemas de anéis e ricos depósitos minerais."
+      },
+      {
+        "locale": "es-ES",
+        "description": "Planeta templado rodeado de enormes sistemas de anillos y ricos depósitos minerales."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Zenith IX",
+    "descriptions": [
+      {
+        "locale": "en-US",
+        "description": "Remote desert world known for its towering crystal formations and extreme climate."
+      },
+      {
+        "locale": "pt-BR",
+        "description": "Mundo desértico remoto conhecido por suas imponentes formações cristalinas e clima extremo."
+      },
+      {
+        "locale": "es-ES",
+        "description": "Mundo desértico remoto conocido por sus imponentes formaciones cristalinas y su clima extremo."
+      }
+    ]
+  }
+]
