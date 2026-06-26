@@ -1,5 +1,8 @@
 package com.gblrod.orbitalnexus.database.seed
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class AstronautSeed(
     val id: Int,
     val name: String,

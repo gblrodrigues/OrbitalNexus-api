@@ -10,6 +10,7 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Dat
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Running the Project](#running-the-project)
+* [API Documentation](#api-documentation)
 * [API Endpoints](#api-endpoints)
 * [Example Responses](#example-responses)
 * [Localization](#localization)
@@ -23,7 +24,9 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Dat
 | Language | [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/) | Main development language (my favorite 💜)
 | Framework | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=for-the-badge\&logo=ktor\&logoColor=white)](https://ktor.io/) | Backend framework for building REST APIs
 | SQL Framework | ![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=for-the-badge) | SQL framework used for database access and queries
-| Database | ![H2](https://img.shields.io/badge/H2_Database-1E88E5?style=for-the-badge) | Embedded relational database for local persistence |
+| Database | ![H2](https://img.shields.io/badge/H2_Database-1E88E5?style=for-the-badge) | Embedded relational database for local persistence
+| API Documentation | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=for-the-badge&logo=swagger&logoColor=white)](https://swagger.io/specification/) | API specification standard
+| Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
 | Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
 | Serialization | ![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=for-the-badge) | JSON serialization and deserialization
 
@@ -52,6 +55,8 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Dat
 * Locale-based API responses
 * Automatic fallback to default locale
 * Serve static image assets
+* Seed data is loaded from JSON resources during application startup.
+* Interactive API documentation with Swagger UI
 
 ## Running the Project
 
@@ -78,6 +83,15 @@ The server will start at:
 ```text
 http://localhost:8080
 ```
+
+## API Documentation
+
+After starting the application, the interactive API documentation is available at:
+
+```text
+http://localhost:8080/swagger
+```
+The API specification follows the OpenAPI 3.0 standard and is served through Swagger UI, allowing every endpoint to be explored and tested directly from the browser.
 
 ## API Endpoints
 
@@ -182,27 +196,23 @@ src/main/kotlin/com/gblrod/orbitalnexus
 ├── database
 │   ├── mapper
 │   ├── seed
-│   ├── AstronautsTable.kt
-│   ├── DatabaseFactory.kt
-│   ├── MissionsTable.kt
-│   ├── MissionTranslationsTable.kt
-│   ├── PlanetsTable.kt
-│   └── PlanetTranslationsTable.kt
-│
+│   ├── table
+|
 ├── di
 │   └── AppModule.kt
 │
 ├── model
-│   ├── Astronaut.kt
-│   ├── ErrorResponse.kt
-│   ├── Mission.kt
-│   ├── Planet.kt
+│   ├── astronaut
+│   ├── error
+│   ├── mission
+│   ├── planet
 │
 ├── plugins
 │   ├── Koin.kt
 │   ├── Routing.kt
 │   ├── Serialization.kt
-│   └── StatusPages.kt
+│   ├── Serialization.kt
+│   └── Swagger.kt
 │
 ├── repository
 │   ├── impl
@@ -217,6 +227,17 @@ src/main/kotlin/com/gblrod/orbitalnexus
 │   ├── impl
 │   └── interfaces
 │
+├── util
+│   └── Locales.kt
+│
+└── resources
+    ├── api
+    │   └── openapi.yaml
+    ├── assets
+    └── seed
+        ├── astronauts.json
+        ├── missions.json
+        └── planets.json
 ```
 
 ## Architecture

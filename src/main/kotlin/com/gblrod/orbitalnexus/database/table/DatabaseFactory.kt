@@ -1,4 +1,4 @@
-package com.gblrod.orbitalnexus.database
+package com.gblrod.orbitalnexus.database.table
 
 import com.gblrod.orbitalnexus.database.seed.SeedData
 import org.jetbrains.exposed.v1.jdbc.Database
