@@ -23,6 +23,10 @@ dependencies {
     implementation(ktorLibs.server.netty)
     implementation(ktorLibs.server.statusPages)
 
+    // Swagger
+    implementation(ktorLibs.server.openapi)
+    implementation(ktorLibs.server.swagger)
+
     // H2
     implementation(libs.h2)
 
