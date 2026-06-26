@@ -1,0 +1,467 @@
+openapi: 3.0.3
+
+info:
+  title: OrbitalNexus API
+  description: |
+    OrbitalNexus API is a fictional space exploration REST API built with Kotlin and Ktor.
+
+    The API provides access to planets, missions and astronauts participating in interstellar exploration programs.
+
+    Localization is supported through the `lang` query parameter.
+
+    Supported languages:
+    * en-US (default)
+    * pt-BR
+    * es-ES
+
+  version: 1.0.0
+
+  contact:
+    name: Gabriel Rodrigues
+    url: https://www.linkedin.com/in/gblrodrigues/
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+tags:
+  - name: Planets
+    description: Operations related to planets.
+
+  - name: Missions
+    description: Operations related to space missions.
+
+  - name: Astronauts
+    description: Operations related to astronauts.
+
+paths:
+
+  /v1/planets:
+    get:
+      tags:
+        - Planets
+
+      summary: List all planets
+
+      description: Returns all available planets.
+
+      parameters:
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: List of planets.
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/Planet'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/planets/{id}:
+    get:
+      tags:
+        - Planets
+
+      summary: Get planet by ID
+
+      description: Returns a single planet.
+
+      parameters:
+        - $ref: '#/components/parameters/PlanetId'
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: Planet found.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
+
+        '400':
+          $ref: '#/components/responses/InvalidPlanetId'
+
+        '404':
+          $ref: '#/components/responses/PlanetNotFound'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/planets/{id}/missions:
+    get:
+      tags:
+        - Planets
+
+      summary: List missions by planet
+
+      description: Returns all missions associated with a planet.
+
+      parameters:
+        - $ref: '#/components/parameters/PlanetId'
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: List of missions.
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/Mission'
+
+        '400':
+          $ref: '#/components/responses/InvalidPlanetId'
+
+        '404':
+          $ref: '#/components/responses/PlanetNotFound'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/missions:
+    get:
+      tags:
+        - Missions
+
+      summary: List all missions
+
+      parameters:
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: List of missions.
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/Mission'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/missions/{id}:
+    get:
+      tags:
+        - Missions
+
+      summary: Get mission by ID
+
+      parameters:
+        - $ref: '#/components/parameters/MissionId'
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: Mission found.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mission'
+
+        '400':
+          $ref: '#/components/responses/InvalidMissionId'
+
+        '404':
+          $ref: '#/components/responses/MissionNotFound'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/missions/{id}/astronauts:
+    get:
+      tags:
+        - Missions
+
+      summary: List astronauts by mission
+
+      parameters:
+        - $ref: '#/components/parameters/MissionId'
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: List of astronauts.
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/Astronaut'
+
+        '400':
+          $ref: '#/components/responses/InvalidMissionId'
+
+        '404':
+          $ref: '#/components/responses/MissionNotFound'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/missions/{id}/planet:
+    get:
+      tags:
+        - Missions
+
+      summary: Retrieve mission planet
+
+      parameters:
+        - $ref: '#/components/parameters/MissionId'
+        - $ref: '#/components/parameters/Lang'
+
+      responses:
+        '200':
+          description: Planet associated with mission.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
+
+        '400':
+          $ref: '#/components/responses/InvalidMissionId'
+
+        '404':
+          description: Mission or planet not found.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/astronauts:
+    get:
+      tags:
+        - Astronauts
+
+      summary: List all astronauts
+
+      responses:
+        '200':
+          description: List of astronauts.
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/Astronaut'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /v1/astronauts/{id}:
+    get:
+      tags:
+        - Astronauts
+
+      summary: Get astronaut by ID
+
+      parameters:
+        - $ref: '#/components/parameters/AstronautId'
+
+      responses:
+        '200':
+          description: Astronaut found.
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Astronaut'
+
+        '400':
+          $ref: '#/components/responses/InvalidAstronautId'
+
+        '404':
+          $ref: '#/components/responses/AstronautNotFound'
+
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+
+  parameters:
+
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language.
+      schema:
+        type: string
+        default: en-US
+        enum:
+          - en-US
+          - pt-BR
+          - es-ES
+
+    PlanetId:
+      name: id
+      in: path
+      required: true
+      description: Planet identifier.
+      schema:
+        type: integer
+        example: 1
+
+    MissionId:
+      name: id
+      in: path
+      required: true
+      description: Mission identifier.
+      schema:
+        type: integer
+        example: 1
+
+    AstronautId:
+      name: id
+      in: path
+      required: true
+      description: Astronaut identifier.
+      schema:
+        type: integer
+        example: 1
+
+  schemas:
+    Planet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+
+        name:
+          type: string
+          example: Kepler Prime
+
+        description:
+          type: string
+          example: Rocky planet located in the Vega sector.
+
+    Mission:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+
+        name:
+          type: string
+          example: Aurora VII
+
+        missionObjective:
+          type: string
+          example: Survey Kepler Prime and identify suitable landing zones.
+
+        description:
+          type: string
+
+        planetId:
+          type: integer
+          example: 1
+
+        launchYear:
+          type: integer
+          example: 2042
+
+    Astronaut:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+
+        name:
+          type: string
+          example: Luna Carter
+
+        nationality:
+          type: string
+          example: Terran
+
+        missionId:
+          type: integer
+          example: 1
+
+        image:
+          type: string
+          nullable: true
+          example: http://localhost:8080/assets/astronauts/Luna_Carter_image_profile.png
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Resource not found
+
+  responses:
+
+    InvalidPlanetId:
+      description: Invalid planet id.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InvalidMissionId:
+      description: Invalid mission id.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InvalidAstronautId:
+      description: Invalid astronaut id.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    PlanetNotFound:
+      description: Planet not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    MissionNotFound:
+      description: Mission not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    AstronautNotFound:
+      description: Astronaut not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InternalServerError:
+      description: Unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
