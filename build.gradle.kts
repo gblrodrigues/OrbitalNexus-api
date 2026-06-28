@@ -27,8 +27,8 @@ dependencies {
     implementation(ktorLibs.server.openapi)
     implementation(ktorLibs.server.swagger)
 
-    // H2
-    implementation(libs.h2)
+    // PostgreSQL
+    implementation(libs.postgresql)
 
     // Koin
     implementation(libs.koin.core)
