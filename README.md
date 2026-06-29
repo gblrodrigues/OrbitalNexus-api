@@ -4,7 +4,7 @@
 [![Ktor](https://img.shields.io/badge/Ktor-3.5-087CFA)](https://ktor.io/)
 [![Koin](https://img.shields.io/badge/Koin-4.2.1-purple)](https://insert-koin.io/)
 
-OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Database for managing planets, missions and astronauts in a fictional space exploration system.
+OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and PostgreSQL Database for managing planets, missions and astronauts in a fictional space exploration system.
 > This API serves as the backend for the [OrbitalNexus Android application](https://github.com/gblrodrigues/OrbitalNexus-android).
 
 * [Technologies Used](#technologies-used)
@@ -23,12 +23,13 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Dat
 |----------|------------|-----|
 | Language | [![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge\&logo=kotlin\&logoColor=white)](https://kotlinlang.org/) | Main development language (my favorite 💜)
 | Framework | [![Ktor](https://img.shields.io/badge/Ktor-087CFA?style=for-the-badge\&logo=ktor\&logoColor=white)](https://ktor.io/) | Backend framework for building REST APIs
-| SQL Framework | ![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=for-the-badge) | SQL framework used for database access and queries
-| Database | ![H2](https://img.shields.io/badge/H2_Database-1E88E5?style=for-the-badge) | Embedded relational database for local persistence
+| SQL Framework | [![Exposed](https://img.shields.io/badge/Exposed-FF6B6B?style=for-the-badge)](https://www.jetbrains.com/exposed/) | SQL framework used for database access and queries
+| Database | [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/) | Primary relational database used for persistent data storage
+| Database Migrations | [![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=for-the-badge&logo=flyway&logoColor=white)](https://documentation.red-gate.com/flyway) | Versioned database schema and seed data
 | API Documentation | [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-6BA539?style=for-the-badge&logo=swagger&logoColor=white)](https://swagger.io/specification/) | API specification standard
 | Documentation UI | [![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/tools/swagger-ui/) | Interactive API documentation
 | Dependency Injection | [![Koin](https://img.shields.io/badge/Koin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://insert-koin.io/) | Dependency injection framework
-| Serialization | ![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=for-the-badge) | JSON serialization and deserialization
+| Serialization | [![Kotlinx Serialization](https://img.shields.io/badge/Kotlinx_Serialization-7F52FF?style=for-the-badge)](https://kotlinlang.org/docs/serialization.html) | JSON serialization and deserialization
 
 ## Features
 
@@ -55,7 +56,7 @@ OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and H2 Dat
 * Locale-based API responses
 * Automatic fallback to default locale
 * Serve static image assets
-* Seed data is loaded from JSON resources during application startup.
+* Versioned database schema and seed data with Flyway.
 * Interactive API documentation with Swagger UI
 
 ## Running the Project
@@ -75,8 +76,16 @@ cd OrbitalNexus-api
 Run the application:
 
 ```bash
+1. Clone the repository
+
+2. Start PostgreSQL
+docker compose up -d
+
+3. Run the application
 ./gradlew run
 ```
+
+> Flyway automatically applies all database migrations during application startup.
 
 The server will start at:
 
@@ -195,8 +204,10 @@ src/main/kotlin/com/gblrod/orbitalnexus
 │
 ├── database
 │   ├── mapper
-│   ├── seed
 │   ├── table
+│   ├── DatabaseConfig.kt
+│   ├── DatabaseFactory.kt
+│   ├── FlywayFactory.kt
 |
 ├── di
 │   └── AppModule.kt
@@ -234,10 +245,8 @@ src/main/kotlin/com/gblrod/orbitalnexus
     ├── api
     │   └── openapi.yaml
     ├── assets
-    └── seed
-        ├── astronauts.json
-        ├── missions.json
-        └── planets.json
+    └── db
+        └── migration
 ```
 
 ## Architecture
@@ -251,8 +260,11 @@ Services
       ↓
 Repositories
       ↓
-Database (Exposed + H2)
+Exposed
+      ↓
+PostgreSQL
 
+Database schema managed by Flyway
 Dependencies managed by Koin
 ```
 
