@@ -30,6 +30,10 @@ dependencies {
     // PostgreSQL
     implementation(libs.postgresql)
 
+    // Flyway
+    implementation(libs.flyway.core)
+    implementation(libs.flyway.database.postgresql)
+
     // Koin
     implementation(libs.koin.core)
     implementation(libs.koin.ktor)
