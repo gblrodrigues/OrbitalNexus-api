@@ -27,8 +27,12 @@ dependencies {
     implementation(ktorLibs.server.openapi)
     implementation(ktorLibs.server.swagger)
 
-    // H2
-    implementation(libs.h2)
+    // PostgreSQL
+    implementation(libs.postgresql)
+
+    // Flyway
+    implementation(libs.flyway.core)
+    implementation(libs.flyway.database.postgresql)
 
     // Koin
     implementation(libs.koin.core)

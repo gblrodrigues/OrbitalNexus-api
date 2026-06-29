@@ -10,7 +10,7 @@ object MissionsTable : Table(name = "missions") {
         length = 30
     )
 
-    val planetId = integer(name = "planet_id")
+    val planetId = integer(name = "planet_id").references(PlanetsTable.id)
     val launchYear = integer(name = "launch_year")
 
     override val primaryKey = PrimaryKey(firstColumn = id)

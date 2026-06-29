@@ -15,7 +15,7 @@ object AstronautsTable : Table(name = "astronauts") {
         length = 30
     )
 
-    val missionId = integer(name = "mission_id")
+    val missionId = integer(name = "mission_id").references(MissionsTable.id)
 
     val image = varchar(
         name = "image",

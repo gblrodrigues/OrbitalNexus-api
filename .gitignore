@@ -6,6 +6,9 @@ build/
 .idea/
 *.iml
 
+# env
+.env
+
 # Kotlin
 .kotlin/
 
