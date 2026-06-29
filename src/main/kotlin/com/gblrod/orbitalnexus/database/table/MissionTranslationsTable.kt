@@ -11,7 +11,7 @@ object MissionTranslationsTable : Table(name = "mission_translations") {
     )
 
     val missionObjective = text(
-        name = "missionObjective"
+        name = "mission_objective"
     )
 
     val description = text(
