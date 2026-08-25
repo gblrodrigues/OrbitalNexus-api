@@ -4,8 +4,8 @@
 [![Ktor](https://img.shields.io/badge/Ktor-3.5-087CFA)](https://ktor.io/)
 [![Koin](https://img.shields.io/badge/Koin-4.2.1-purple)](https://insert-koin.io/)
 
-OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and PostgreSQL Database for managing planets, missions and astronauts in a fictional space exploration system.
-> This API serves as the backend for the [OrbitalNexus Android application](https://github.com/gblrodrigues/OrbitalNexus-android).
+OrbitalNexus API is a REST API built with Kotlin, Ktor, Exposed, Koin and PostgreSQL for managing planets, missions 
+and astronauts in a fictional space exploration system.
 
 * [Technologies Used](#technologies-used)
 * [Features](#features)
@@ -267,18 +267,6 @@ PostgreSQL
 Database schema managed by Flyway
 Dependencies managed by Koin
 ```
-
-## Related Projects
-
-### OrbitalNexus Android
-Android client built with:
-* Kotlin
-* Jetpack Compose
-* Retrofit
-* Koin
-* MVVM + StateFlow
-
-🔗 [Repository](https://github.com/gblrodrigues/OrbitalNexus-android)
 
 ## Contact
 
